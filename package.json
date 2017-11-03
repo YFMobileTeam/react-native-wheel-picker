@@ -1,13 +1,13 @@
 {
-  "name": "react-native-datepicker-yf",
-  "version": "1.3.5",
-  "description": "",
+  "name": "react-native-wheel-picker-free",
+  "version": "1.0.0",
+  "description": "react native picker items no limit as wheel picker.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "moment": "2.18.1"
+    "moment": "2.19.1"
   },
   "author": "Abel",
   "license": "ISC"
