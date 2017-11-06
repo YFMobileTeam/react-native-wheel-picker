@@ -105,8 +105,7 @@ export default class SingleItemPicker extends Component {
                 Styles={Styles}
                 onPress={this.clickModal}
                 visible={openModal === modalName}
-                modalColor={modalColor}
-            >
+                modalColor={modalColor}>
                 <View>
                     <View style={topLineStyle}/>
                     <DatePickerHead

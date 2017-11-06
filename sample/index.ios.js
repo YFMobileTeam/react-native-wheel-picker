@@ -4,16 +4,11 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-    AppRegistry,
+  AppRegistry
 } from 'react-native';
+
 import App from './App'
 
-export default class sample extends Component {
-    render() {
-        return <App/>
-    }
-}
-
-AppRegistry.registerComponent('sample', () => sample);
+AppRegistry.registerComponent('sample', () => App);

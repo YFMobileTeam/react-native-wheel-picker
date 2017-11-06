@@ -5,12 +5,14 @@ import {
     Text,
     Platform,
     PickerIOS,
+    StyleSheet,
 } from 'react-native'
 
 import DPicker from '../wheel/index'
+
 let DPickerItem = DPicker.Item
 
-export default class DatePicker extends Component {
+export default class ItemPicker extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -25,18 +27,24 @@ export default class DatePicker extends Component {
             onChange,
             itemStyle,
         } = this.props
-        const selectValue = value[0] === "0" ? value.substr(1) : value
+
+        let itemStyleFinal = itemStyle
+        if ('number' === (typeof itemStyleFinal)) {
+            itemStyleFinal = StyleSheet.flatten(itemStyle)
+        }
+
+        const {value: selectValue} = value
         return (
             <View style={Styles.pickerWheel}>
                 <DPicker style={{flex: 1}}
                          selectedValue={selectValue}
-                         itemStyle={itemStyle}
+                         itemStyle={itemStyleFinal}
                          onValueChange={onChange}>
                     {
                         group.map((value, i) => (
-                            <DPickerItem label={value}
-                                         value={value}
-                                         key={keyString + value}/>
+                            <DPickerItem label={value.label}
+                                         value={value.value}
+                                         key={keyString + value.value}/>
                         ))
                     }
                 </DPicker>

@@ -1,9 +1,9 @@
 'use strict';
 
-import DatePicker from './datePicker/datePicker'
-import SingleItemPicker from './datePicker/singleItemPicker'
-import DualItemPicker from './datePicker/dualItemPicker'
-import MultiItemPicker from './datePicker/multiItemPicker'
+import DatePicker from './wheelPicker/datePicker'
+import SingleItemPicker from './wheelPicker/singleItemPicker'
+import DualItemPicker from './wheelPicker/dualItemPicker'
+import MultiItemPicker from './wheelPicker/multiItemPicker'
 
 module.exports = {
     DatePicker,

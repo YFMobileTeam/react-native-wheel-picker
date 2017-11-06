@@ -32,7 +32,7 @@ const timerData = {}
 const multiItemPickerData = [
     [{label: '2011', value: '2011'}, {label: '2012', value: '2012'}, {label: '2013', value: '2013'}, {
         label: '2014',
-        value: 2014
+        value: '2014'
     }],
     [{label: '1月', value: '1'}, {label: '2月', value: '2'}, {label: '3月', value: '3'}, {label: '4月', value: '4'}],
     [{label: '湖南省', value: '湖南省'}, {label: '广东省', value: '广东省'}, {label: '内蒙古', value: '内蒙古'}]
@@ -41,7 +41,6 @@ const multiItemPickerDefaultData = undefined
 
 // noinspection JSAnnotator
 export default class App extends Component<{}> {
-
 
     datePickerDialog
     timePickerDialog
@@ -74,7 +73,17 @@ export default class App extends Component<{}> {
             second.push({label: `${valueStr}秒`, value: `${valueStr}`})
         }
         const time = [hour, minute, second]
-        Object.assign(timerData, {time: time, defaultValue: undefined})
+        const date = new Date()
+        const hourStr = this._getLabel(date.getHours())
+        const minuteStr = this._getLabel(date.getMinutes())
+        const secondStr = this._getLabel(date.getSeconds())
+        // const defaultValue = JSON.parse(`{"${hourStr}时":"${hourStr}","${minuteStr}分":"${minuteStr}","${secondStr}秒":"${secondStr}"}`)
+        const defaultValue = [
+            {label: `${hourStr}时`, value: `${hourStr}`},
+            {label: `${minuteStr}时`, value: `${minuteStr}`},
+            {label: `${secondStr}时`, value: `${secondStr}`}
+        ]
+        Object.assign(timerData, {time: time, defaultValue: defaultValue})
     }
 
     _getLabel = (value) => {
@@ -118,12 +127,9 @@ export default class App extends Component<{}> {
                     finishText="确定"
                     title="出生年月日"
                     modalColor="#0000"
-                    itemStyle={{color: 'black', fontSize: 24}}
-                    buttonStyle={{
-                        color: '#003366',
-                        fontSize: 24
-                    }}
-                    titleStyle={{color: 'black', fontSize: 26}}
+                    itemStyle={styles.pickerItem}
+                    buttonStyle={styles.pickerBtn}
+                    titleStyle={styles.singleItemPickerTitle}
                 />
                 <MultiItemPicker
                     ref={(dialog) => this.timePickerDialog = dialog}
@@ -131,12 +137,10 @@ export default class App extends Component<{}> {
                     defaultSelectedValue={timerData.defaultValue}
                     onPick={this._onPickerConform}
                     title="时间选择器"
-                    itemStyle={{color: 'black', fontSize: 24,backgroundColor:'blue'}}
-                    buttonStyle={{
-                        color: '#003366',
-                        fontSize: 24
-                    }}
-                    titleStyle={{color: 'black', fontSize: 26}}
+                    itemStyle={styles.pickerItem}
+                    buttonStyle={styles.pickerBtn}
+                    topLineStyle={styles.singleItemPickTopLineStyle}
+                    titleStyle={styles.singleItemPickerTitle}
                 />
                 <MultiItemPicker
                     ref={(dialog) => this.multiItemPickerDialog = dialog}
@@ -145,7 +149,7 @@ export default class App extends Component<{}> {
                     onPick={this._onPickerConform}
                     title="自由组合"
                     itemStyle={styles.pickerItem}
-                    buttonStyle={styles.pickerConfirmBtn}
+                    buttonStyle={styles.pickerBtn}
                     topLineStyle={styles.singleItemPickTopLineStyle}
                     titleStyle={styles.singleItemPickerTitle}
                 />
@@ -195,19 +199,15 @@ const styles = StyleSheet.create({
     },
     singleItemPickerTitle: {
         color: 'black',
-        fontSize: 26,
+        fontSize: 20,
     },
     pickerItem: {
-        color: 'black',
-        fontSize: 24
+        color: 'red',
+        fontSize: 18
     },
-    pickerConfirmBtn: {
-        color: '#00FF00',
-        fontSize: 24
-    },
-    pickerCancelBtn: {
-        color: 'gray',
-        fontSize: 24
+    pickerBtn: {
+        color: '#036',
+        fontSize: 18
     },
     singleItemPickTopLineStyle: {
         backgroundColor: '#0000FF',

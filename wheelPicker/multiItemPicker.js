@@ -130,8 +130,10 @@ export default class DualItemPicker extends Component {
                     <View style={[styles.content, Styles.pickerWrap, isAndroid]}>
                         {
                             dataSet.map((e, index) => {
+                                const key = `column_${index}`
                                 return <ItemPicker
-                                    keyString={`column_${index}`}
+                                    key={key}
+                                    keyString={key}
                                     Styles={Styles}
                                     itemStyle={itemStyle}
                                     group={e}

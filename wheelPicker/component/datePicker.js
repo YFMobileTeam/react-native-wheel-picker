@@ -9,10 +9,9 @@ import {
 } from 'react-native'
 
 import DPicker from '../wheel/index'
-
 let DPickerItem = DPicker.Item
 
-export default class ItemPicker extends Component {
+export default class DatePicker extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -27,13 +26,11 @@ export default class ItemPicker extends Component {
             onChange,
             itemStyle,
         } = this.props
-
+        const selectValue = value[0] === "0" ? value.substr(1) : value
         let itemStyleFinal = itemStyle
-        if(itemStyle instanceof Number){
+        if ('number' === (typeof itemStyleFinal)) {
             itemStyleFinal = StyleSheet.flatten(itemStyle)
         }
-
-        const {value: selectValue} = value
         return (
             <View style={Styles.pickerWheel}>
                 <DPicker style={{flex: 1}}
@@ -42,8 +39,8 @@ export default class ItemPicker extends Component {
                          onValueChange={onChange}>
                     {
                         group.map((value, i) => (
-                            <DPickerItem label={value.label}
-                                         value={value.value}
+                            <DPickerItem label={value}
+                                         value={value}
                                          key={keyString + value}/>
                         ))
                     }

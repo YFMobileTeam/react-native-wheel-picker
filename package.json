@@ -1,6 +1,6 @@
 {
   "name": "react-native-wheel-picker-free",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react native picker items no limit as wheel picker.",
   "main": "index.js",
   "scripts": {
