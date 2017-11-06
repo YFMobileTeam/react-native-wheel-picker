@@ -1,4 +1,5 @@
 /**
+ * @deprecated
  * Created by otto on 2017/11/2.
  */
 

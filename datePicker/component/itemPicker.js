@@ -5,6 +5,7 @@ import {
     Text,
     Platform,
     PickerIOS,
+    StyleSheet,
 } from 'react-native'
 
 import DPicker from '../wheel/index'
@@ -26,12 +27,18 @@ export default class ItemPicker extends Component {
             onChange,
             itemStyle,
         } = this.props
+
+        let itemStyleFinal = itemStyle
+        if(itemStyle instanceof Number){
+            itemStyleFinal = StyleSheet.flatten(itemStyle)
+        }
+
         const {value: selectValue} = value
         return (
             <View style={Styles.pickerWheel}>
                 <DPicker style={{flex: 1}}
                          selectedValue={selectValue}
-                         itemStyle={itemStyle}
+                         itemStyle={itemStyleFinal}
                          onValueChange={onChange}>
                     {
                         group.map((value, i) => (

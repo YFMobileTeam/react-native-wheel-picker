@@ -17,10 +17,10 @@ import ItemPicker from './component/itemPicker'
 import Styles from './style'
 import index from "./style/index";
 
+const isAndroid = Platform.OS === 'ios' ? {} : {height: 200, maxHeight: 300}
 let nextID = 1
 
 export default class DualItemPicker extends Component {
-
 
     static propTypes = {
         dataSet: PropTypes.array,
@@ -127,7 +127,7 @@ export default class DualItemPicker extends Component {
                         title={title}
                         finishText={finishText}
                     />
-                    <View style={styles.content}>
+                    <View style={[styles.content, Styles.pickerWrap, isAndroid]}>
                         {
                             dataSet.map((e, index) => {
                                 return <ItemPicker

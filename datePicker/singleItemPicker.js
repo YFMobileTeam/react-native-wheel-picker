@@ -14,6 +14,7 @@ import {DateModal, DatePickerHead} from './component'
 import ItemPicker from './component/itemPicker'
 import Styles from './style'
 
+const isAndroid = Platform.OS === 'ios' ? {} : {height: 200, maxHeight: 300}
 let nextID = 1
 
 export default class SingleItemPicker extends Component {
@@ -38,7 +39,7 @@ export default class SingleItemPicker extends Component {
         cancelText: '取消',
         finishText: '确认',
         touchOutsideDismiss: true,
-        modalColor:'#0000'
+        modalColor: '#0000'
     }
 
     constructor(props) {
@@ -118,14 +119,16 @@ export default class SingleItemPicker extends Component {
                         title={title}
                         finishText={finishText}
                     />
-                    <ItemPicker
-                        keyString='selectedItem'
-                        Styles={Styles}
-                        itemStyle={itemStyle}
-                        group={dataSet}
-                        value={selectedValue}
-                        onChange={this._onChange}
-                    />
+                    <View style={[Styles.pickerWrap, isAndroid]}>
+                        <ItemPicker
+                            keyString='selectedItem'
+                            Styles={Styles}
+                            itemStyle={itemStyle}
+                            group={dataSet}
+                            value={selectedValue}
+                            onChange={this._onChange}
+                        />
+                    </View>
                 </View>
             </DateModal>
         )
