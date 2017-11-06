@@ -92,13 +92,7 @@ export default class App extends Component<{}> {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-                </Text>
-                <Text style={styles.instructions}>
-                    {instructions}
+                    react-native-wheel-picker-free
                 </Text>
                 <TouchableOpacity onPress={() => this.datePickerDialog.showDialog()}>
                     <Text style={styles.btn}>日期选择器</Text>
@@ -137,10 +131,12 @@ export default class App extends Component<{}> {
                     defaultSelectedValue={timerData.defaultValue}
                     onPick={this._onPickerConform}
                     title="时间选择器"
-                    itemStyle={styles.pickerItem}
-                    buttonStyle={styles.pickerConfirmBtn}
-                    topLineStyle={styles.singleItemPickTopLineStyle}
-                    titleStyle={styles.singleItemPickerTitle}
+                    itemStyle={{color: 'black', fontSize: 24,backgroundColor:'blue'}}
+                    buttonStyle={{
+                        color: '#003366',
+                        fontSize: 24
+                    }}
+                    titleStyle={{color: 'black', fontSize: 26}}
                 />
                 <MultiItemPicker
                     ref={(dialog) => this.multiItemPickerDialog = dialog}
